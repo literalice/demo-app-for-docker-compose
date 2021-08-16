@@ -14,7 +14,8 @@ services:
       - 80:80
 
   backend:
-    image: public.ecr.aws/bitnami/redis:6.2
+    image: ${IMAGE_URI:-backend}:${IMAGE_TAG:-latest}
+    build: ./backend
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
