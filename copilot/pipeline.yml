@@ -22,10 +22,8 @@ source:
 # The deployment section defines the order the pipeline will deploy
 # to your environments.
 stages:
-    - # The name of the environment to deploy to.
-      name: test
-      # Optional: flag for manual approval action before deployment.
-      # requires_approval: true
-      # Optional: use test commands to validate this stage of your build.
-      test_commands: [echo 'running tests', make test]
-
+    - name: test
+      test_commands: [echo 'running tests']
+    - name: prod
+      requires_approval: true
+      test_commands: [echo 'running tests']
